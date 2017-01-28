@@ -39,7 +39,7 @@ def index(filename):
 def send_qr():
     #inigo finds position
     #esteve calculates the sequence
-    return json.dumps({"time_frames": 200,"data": ["#FF2B2B","#AFDACA","#EFDECD"]})
+    return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"]})
 
 
 @app.route('/set_scenario')
