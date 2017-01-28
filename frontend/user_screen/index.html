@@ -14,18 +14,10 @@
             //alert("hola")
             var d = new Date();
             var n = d.getTime();
-
-            $.ajax({
-                dataType: 'jsonp',
-                url: 'http://timeapi.org/utc/now.json',
-                success: function (result) {
-                    n = result.dateString;
-                }
-            });
+            console.log(n);
             //alert(sequence[n%sequence.length]);
             //console.log(Math.floor(n/time)%(sequence.length));
-            document.body.style.backgroundColor = sequence[Math.floor(n/time)%(sequence.length)];
-            
+            document.body.style.backgroundColor = sequence[Math.floor(n/time)%(sequence.length)];            
         }
 
         function uploadFile() {
