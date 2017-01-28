@@ -9,6 +9,8 @@ from flask import Flask, send_from_directory
 from flask import request, abort
 
 
+
+
 app = Flask(__name__)
 
 # Regular expression to only accept certain files
@@ -24,7 +26,6 @@ def root_dir():  # pragma: no cover
 @app.route('/')
 def root():
     return send_from_directory(os.path.join(root_dir(), '../../frontend/user_screen'), "index.html")
-    return index("/user_screen/index.html")
 
 
 @app.route('/<path:filename>')
@@ -34,9 +35,11 @@ def index(filename):
     abort(403)
 
 
-@app.route('/send_qr')
+@app.route('/send_qr',methods=['POST'])
 def send_qr():
-    return json.dumps({"time_frames": 20,"data": ["#EFDECD","#EFDECD","#EFDECD"]})
+    #inigo finds position
+    #esteve calculates the sequence
+    return json.dumps({"time_frames": 200,"data": ["#FF2B2B","#AFDACA","#EFDECD"]})
 
 
 @app.route('/set_scenario')
