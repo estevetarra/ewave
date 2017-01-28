@@ -102,21 +102,20 @@ Here is gonna be the API
 
 {
 
-"qr_size" : 4.25,
+    "qr_size" : 4.25,
 
-"qr_center_height" : 2.3,
+    "qr_center_height" : 2.3,
 
-"qr_distance" : 8.9,
+    "qr_distance" : 8.9,
 
-"image_width" : 3,
+    "image_width" : 3,
 
-"image_height" : 5,
+    "image_height" : 5,
 
-"room_x" : 3.2,
+    "room_x" : 3.2,
 
-"room_y" : 5.4,
+    "room_y" : 5.4,
 
-    
     "time_frames" : 30,
     
     // data[frame_number][vertical][horizontal]
