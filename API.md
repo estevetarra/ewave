@@ -7,17 +7,17 @@ Here is gonna be the API
 
     "qr_size" : 4.25,
     
-    "qr_height" : 2.3,
+    "qr_center_height" : 2.3,
     
     "qr_distance" : 8.9,
     
-    "horizontal_dimension" : 3,
+    "image_width" : 3,
     
-    "vertical_dimension" : 5,
+    "image_height" : 5,
     
-    "horizontal_lenght" : 3.2,
+    "room_x" : 3.2,
     
-    "vertical_lenght" : 5.4,
+    "room_y" : 5.4,
     
     "time_frames" : 30,
     
