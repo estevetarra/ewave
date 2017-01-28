@@ -75,13 +75,7 @@ def send_qr():
                                     filename=filename))
     #inigo finds position
     #esteve calculates the sequence
-<<<<<<< HEAD
-    import time
-    millis = int(round(time.time() * 1000))
-    return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
-=======
     return json.dumps({"error": "something when wrong"})
->>>>>>> d5559f0edc38003bcc2b21adc944d53b9f92a7b0
 
 
 @app.route('/set_scenario',methods=['POST'])
