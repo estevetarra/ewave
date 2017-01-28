@@ -26,6 +26,10 @@ def root_dir():  # pragma: no cover
 @app.route('/')
 def root():
     return send_from_directory(os.path.join(root_dir(), '../../frontend/user_screen'), "index.html")
+    
+@app.route('/master')
+def master():
+    return send_from_directory(os.path.join(root_dir(), '../../frontend/master_screen'), "main.html")
 
 
 @app.route('/<path:filename>')
@@ -44,7 +48,8 @@ def send_qr():
 
 @app.route('/set_scenario',methods=['POST'])
 def join_room():
-    return json.dumps({"url": "google.com"})
+    return redirect("http://lmgtfy.com/?q=Esteve+rules+avisam", code=302)
+    return json.dumps({"url": "http://lmgtfy.com/?q=Esteve+rules"})
     return json.dumps({"url": domain + 234567})
 
 
