@@ -9,6 +9,14 @@
     </body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+        function executeSequence(sequence, time){
+            //change colors following the sequence
+            var d = new Date();
+            var n = d.getTime();
+            document.body.style.backgroundColor = sequence[n%response.data.length()];
+            window.setTimeout(executeSequence(sequence,time),time/10);
+        }
+
         function uploadFile() {
             var blobFile = document.getElementById('filechooser');
             var file = blobFile.files[0];
@@ -22,7 +30,12 @@
                processData: false,
                contentType: false,
                success: function(response) {
-                   //read sequence
+                   //read sequence and execute it after synchronization
+                   //alert(response);
+                   var d = new Date();
+                   var n = d.getTime();
+                   var iFrame = n%response.data.length();
+                   executeSequence(response.data, response.time_frames);
                },
                error: function(jqXHR, textStatus, errorMessage) {
                    console.log(errorMessage); // Optional
