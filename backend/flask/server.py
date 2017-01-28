@@ -44,7 +44,7 @@ def root():
 @app.route('/<path:filename>')
 def index(filename):
     if fileChecker.match(filename):
-        return send_from_directory(os.path.join(root_dir(), './../frontend/'), filename)
+        return send_from_directory(os.path.join(root_dir(), '../../frontend/'), filename)
     abort(403)
 
 
