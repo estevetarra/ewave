@@ -23,7 +23,7 @@ def root_dir():  # pragma: no cover
 
 @app.route('/')
 def root():
-    return send_from_directory(os.path.join(root_dir(), 'static'), "/user_screen/index.html")
+    return send_from_directory(os.path.join(root_dir(), '../../frontend/user_screen'), "index.html")
     return index("/user_screen/index.html")
 
 
