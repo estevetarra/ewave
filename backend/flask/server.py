@@ -56,9 +56,7 @@ def send_qr():
 
 @app.route('/set_scenario',methods=['POST'])
 def join_room():
-    return redirect("http://lmgtfy.com/?q=Esteve+rules+avisam", code=302)
     return json.dumps({"url": "http://lmgtfy.com/?q=Esteve+rules"})
-    return json.dumps({"url": domain + 234567})
 
 
 if __name__ == '__main__':
