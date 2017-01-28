@@ -4,6 +4,7 @@ import json
 import os.path
 import random
 import re
+import time
 
 from flask import Flask, send_from_directory
 from flask import request, abort
@@ -67,7 +68,9 @@ def send_qr():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"]})
+
+            millis = int(round(time.time() * 1000))
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
             return redirect(url_for('uploaded_file',
                                     filename=filename))
     #inigo finds position
