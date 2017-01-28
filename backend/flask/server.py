@@ -50,30 +50,9 @@ def index(filename):
 
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
-    app.config['UPLOAD_FOLDER'] = root_dir()
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'QRimage' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['QRimage']
-        # if user does not select file, browser also
-        # submit a empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-            millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    #inigo finds position
-    #esteve calculates the sequence
-    return json.dumps({"error": "something when wrong"})
-
+    millis = int(round(time.time() * 1000))
+    return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
+    
 
 @app.route('/set_scenario',methods=['POST'])
 def join_room():
