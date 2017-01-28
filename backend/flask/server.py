@@ -42,7 +42,7 @@ def send_qr():
     return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"]})
 
 
-@app.route('/set_scenario')
+@app.route('/set_scenario',methods=['POST'])
 def join_room():
     return json.dumps({"url": "google.com"})
     return json.dumps({"url": domain + 234567})
