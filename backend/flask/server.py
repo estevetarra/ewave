@@ -7,16 +7,17 @@ import re
 
 from flask import Flask, send_from_directory
 from flask import request, abort
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, flash
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = './'
+UPLOAD_FOLDER = "./"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'admin'
 
 
 # Regular expression to only accept certain files
@@ -51,6 +52,7 @@ def index(filename):
 
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
+    app.config['UPLOAD_FOLDER'] = root_dir()
     if request.method == 'POST':
         # check if the post request has the file part
         if 'QRimage' not in request.files:
