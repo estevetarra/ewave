@@ -21,7 +21,28 @@ alert ("the form was submitted\n QR size : "+QRSize+"\n QRheight:"+QRheight
 
 );
 
+var objecteJson = {"qr_size": QRSize,
+		"qr_center_height":QRheight,
+		"qr_distance":QRdist_first,
+		"image_width":image_w,
+		"image_height":image_h,
+		"room_x":room_x,
+		"room_y":room_y,
+		"time_frames":frames,
+		"data":resultArray}
 
+xhr = new XMLHttpRequest();
+var url = "127.0.0.1/set_scenario";
+xhr.open ("POST",url,true);
+xhr.setRequestHeader("Content-type","application/json");
+xhr.onreadystatechange=function (){
+	if (xhr.readyState==4 && xhr.status==200){
+		var json_ans = JSON.parse(xhr.responseText);
+		console.log(json_ans.url);
+	}
+}
+var data = JSON.stringify (objecteJson);
+xhr.send(data);
 
 }
 function generateGraph_version1(time_frames,color1,color2, img_w,img_h){
