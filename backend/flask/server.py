@@ -37,17 +37,14 @@ def root_dir():  # pragma: no cover
 
 @app.route('/')
 def root():
-    return send_from_directory(os.path.join(root_dir(), '../../frontend/user_screen'), "index.html")
-    
-@app.route('/master')
-def master():
-    return send_from_directory(os.path.join(root_dir(), '../../frontend/master_screen'), "main.html")
+    return send_from_directory(os.path.join(root_dir(), '../../frontend/'), "index.html")
+
 
 
 @app.route('/<path:filename>')
 def index(filename):
     if fileChecker.match(filename):
-        return send_from_directory(os.path.join(root_dir(), 'static'), filename)
+        return send_from_directory(os.path.join(root_dir(), './../frontend/'), filename)
     abort(403)
 
 
