@@ -4,6 +4,7 @@ Here is gonna be the API
 
 ##Sequence of images
 {
+
     "qr_size" : 4.25,
     
     "qr_height" : 2.3,
@@ -100,6 +101,7 @@ Here is gonna be the API
 /set_scenario
 
 {
+
     "qr_size" : 4.25,
     
     "qr_height" : 2.3,
