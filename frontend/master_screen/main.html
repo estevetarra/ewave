@@ -1,15 +1,33 @@
 <html>
 <body>
+<script src = "master_script.js"></script>
 <h1>Configure image</h1>
-<form>
+<form onsubmit="myFunction()">
 <h4>Enter image resolution:</h4>
-<input type="text" name="xres">
+
+Width:<input type = "number" name = "wimage" maxlength=1> 
+Height:<input type = "number" name = "himage" maxlength=1> 
+
 <h4>Enter room size: </h4>
-
+Width:<input type = "number" name = "wroom" maxlength=1> 
+Height: <input type= "number" name = "hroom" size = 1>
 <h4>Enter QR size: </h4>
-
-
-<h4>Load image: </h4>
+Width:<input type = "number" name = "wqr"> 
+Height: <input type= "number" name = "hqr">
+<h4>Select image type</h4>
+ <select>
+  
+  <option value="wave">Wave</option>
+  <option value="gradient">Gradient</option>
+</select> 
+ 
+<h4>Select colors for the wave:</h4>
+Main Color
+<input type = "color" name="wavecolor1">
+Secondary Color
+<input type = "color" name="wavecolor2">
+<br>
+<input type="submit" name= "generate QR!">
 </form>
 </body>
 </html>
