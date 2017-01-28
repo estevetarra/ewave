@@ -3,31 +3,43 @@
 <script src = "master_script.js"></script>
 <h1>Configure image</h1>
 <form onsubmit="myFunction()">
+<h3>About the animation</h3>
 <h4>Enter image resolution:</h4>
 
-Width:<input type = "number" name = "wimage" maxlength=1> 
-Height:<input type = "number" name = "himage" maxlength=1> 
-
-<h4>Enter room size: </h4>
-Width:<input type = "number" name = "wroom" maxlength=1> 
-Height: <input type= "number" name = "hroom" size = 1>
-<h4>Enter QR size: </h4>
-Width:<input type = "number" name = "wqr"> 
-Height: <input type= "number" name = "hqr">
+Width:<input type = "number" width ="1" name = "wimage" id = "imgw" value =5 required >px<br> 
+Height:<input type= "number" name = "himage" id = "imgh" value =5 required> px
 <h4>Select image type</h4>
  <select>
-  
   <option value="wave">Wave</option>
   <option value="gradient">Gradient</option>
 </select> 
- 
-<h4>Select colors for the wave:</h4>
+ <h4>Select colors for the wave:</h4>
 Main Color
-<input type = "color" name="wavecolor1">
+<input type = "color" id = "color1" name="wavecolor1">
 Secondary Color
-<input type = "color" name="wavecolor2">
+<input type = "color" id = "color2" name="wavecolor2">
+
+<h4>Select the time between frames</h4>
+
+<input type= "number" name = "frames" id = "frames" value =30 required> 
+<h3>Enter room size: </h3>
+Width:<input type = "number" step = "0.1" value = 20 name = "wroom" id = "roomw" required>m <br>
+Length:<input type= "number" step = "0.1" value = 20 name = "hroom" id ="roomh"  required>m
+<h3> About the QR </h3>
+<h4 id = "title">Enter QR size: </h4>
+<input type = "number" step = "0.01" name = "qrsize" id="qrsize" required>
+  
+<h4 id = "title">Enter the height of the QR center: </h4>
+
+<input type = "number" step = "0.1" name = "qrheight" id="qrheight" required>m
+
+<h4 id = "title">Enter the distance of the QR from the crowd: </h4>
+
+<input type = "number" step = "0.1" name = "qrdistance" id="qrdistance" required>m
+
 <br>
 <input type="submit" name= "generate QR!">
 </form>
+<p id = "resultArray"></p>
 </body>
 </html>
