@@ -13,7 +13,7 @@
             //change colors following the sequence
             var d = new Date();
             var n = d.getTime();
-            document.body.style.backgroundColor = sequence[n%response.data.length()];
+            document.body.style.backgroundColor = sequence[n%sequence.length()];
             window.setTimeout(executeSequence(sequence,time),time/10);
         }
 
@@ -21,7 +21,7 @@
             var blobFile = document.getElementById('filechooser');
             var file = blobFile.files[0];
             var formData = new FormData();
-            formData.append("fileToUpload", blobFile);
+            formData.append("QRImage", blobFile);
 
             $.ajax({
                url: "/send_qr",
@@ -32,10 +32,11 @@
                success: function(response) {
                    //read sequence and execute it after synchronization
                    //alert(response);
+                   var json = JSON.parse(response)
                    var d = new Date();
                    var n = d.getTime();
-                   var iFrame = n%response.data.length();
-                   executeSequence(response.data, response.time_frames);
+                   var iFrame = n%json["data"].length();
+                   executeSequence(json["data"], json["time_frames"]);
                },
                error: function(jqXHR, textStatus, errorMessage) {
                    console.log(errorMessage); // Optional
