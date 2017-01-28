@@ -14,8 +14,16 @@
             //alert("hola")
             var d = new Date();
             var n = d.getTime();
+
+            $.ajax({
+                dataType: 'jsonp',
+                url: 'http://timeapi.org/utc/now.json',
+                success: function (result) {
+                    n = result.dateString;
+                }
+            });
             //alert(sequence[n%sequence.length]);
-            console.log(Math.floor(n/time)%(sequence.length));
+            //console.log(Math.floor(n/time)%(sequence.length));
             document.body.style.backgroundColor = sequence[Math.floor(n/time)%(sequence.length)];
             
         }
@@ -36,7 +44,7 @@
                    //read sequence and execute it after synchronization
                    //alert(response);
                    var json = JSON.parse(response)
-                   setInterval(executeSequence,json["time_frames"]/10,json["data"],json["time_frames"]);
+                   setInterval(executeSequence,10,json["data"],json["time_frames"]);
                 },
                error: function(jqXHR, textStatus, errorMessage) {
                    console.log(errorMessage); // Optional
