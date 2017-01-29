@@ -86,6 +86,7 @@ def send_qr():
             scenario = json.load(text_file)
             
             text_file.close()
+            par = {}
             par['x'] = pos[0]
             par['y'] = pos[2]
             marcret = getColorSequence(scenario,par)
