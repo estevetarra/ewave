@@ -79,10 +79,14 @@ def send_qr():
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
+            
             text_file.close()
+            par['x'] = pos['x']
+            par['y'] = pos['z']
+            marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : pos, "room_x": scenario['room_x']})
+            return json.dumps({"time_frames": scenario['time_frames'],"data": marcret, "time": millis})
     return 'something went wrong'
     
 
