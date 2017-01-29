@@ -407,6 +407,8 @@
 	/* Forms */
 
 .form-style-2{
+   /* margin : auto;*/
+
 	max-width: 500px;
 	padding: 20px 12px 10px 20px;
 	font: 13px Arial, Helvetica, sans-serif;
@@ -438,7 +440,7 @@
 	text-align: center;
 }
 .form-style-2 input.input-field{
-	width: 20%;
+	width: 16%;
 
 }
 
@@ -446,24 +448,26 @@
 .form-style-2 .tel-number-field,
 .form-style-2 .textarea-field,
 .form-style-2 .select-field{
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border: 1px solid #C2C2C2;
-	box-shadow: 1px 1px 4px #EBEBEB;
-	-moz-box-shadow: 1px 1px 4px #EBEBEB;
-	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
-	border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	padding: 7px;
-	outline: none;
+    width: 16%;
+    height: 2.25em;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    -moz-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 7px;
+    outline: none;
 }
 .form-style-2 .input-field:focus,
 .form-style-2 .tel-number-field:focus,
 .form-style-2 .textarea-field:focus,
 .form-style-2 .select-field:focus{
-	border: 1px solid #0C0;
+	border: 1px solid #341547;
 }
 .form-style-2 .textarea-field{
 	height:100px;
@@ -481,6 +485,16 @@
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
+}
+.form-style-2 input[type=color]{
+    background: #000000;
+    box-shadow: 1px 1px 1px #DADADA;
+    -moz-box-shadow: 1px 1px 4px #DADADA;
+    -webkit-box-shadow: 1px 1px 4px #DADADA;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    height : 2em;
 }
 .form-style-2 input[type=submit]:hover,
 .form-style-2 input[type=button]:hover{
