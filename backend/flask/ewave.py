@@ -101,7 +101,7 @@ def send_qr():
             marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
-            return json.dumps({"error" : 0,"time_frames": scenario['time_between_frames'],"data": marcret, "time": millis})
+            return json.dumps({"error" : 0, "time_frames": scenario['time_between_frames'], "data": marcret, "time": millis})
     return 'something went wrong'
     
 
