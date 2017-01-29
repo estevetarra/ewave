@@ -5,8 +5,10 @@ import os.path
 import random
 import re
 import time
+
 import math
-#import QRRead
+import QRRead
+
 
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
@@ -14,7 +16,7 @@ import pprint
 
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = "/var/www/ewave/backend/tmp_img/"
+UPLOAD_FOLDER = "/var/www/ewave/backend/tmp_img"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
@@ -63,7 +65,7 @@ def send_qr():
         return 'No file part'
     else:
         file = request.files['file']
-        return json.dumps(file)
+        # return json.dumps(file)
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
@@ -72,22 +74,24 @@ def send_qr():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            return ({'noob': str})
-            file.save(str)
-#            res,data,pos = QRRead.getQRPosition(str)
             
-            text_file = open("./output.txt", "r")
+            file.save(str)
+            res,data,pos = QRRead.getQRPosition(str)
+            if res!=0:
+                pos=pos.tolist()
+            
+            text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
             text_file.close()
-
+            
             millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : 0, "room_x": scenario['room_x']})
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : pos, "room_x": scenario['room_x']})
     return 'something went wrong'
     
 
 @app.route('/set_scenario',methods=['POST'])
 def set_scenario():
-    text_file = open("./output.txt", "w")
+    text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "w")
     text_file.write(json.dumps(request.get_json()))
     text_file.close()
     return json.dumps(request.get_json())
