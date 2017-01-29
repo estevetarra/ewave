@@ -12,6 +12,30 @@ import QRRead
 
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
+from flask import jsonify
+
+class InvalidUsage(Exception):
+    status_code = 400
+
+    def __init__(self, message, status_code=None, payload=None):
+        Exception.__init__(self)
+        self.message = message
+        if status_code is not None:
+            self.status_code = status_code
+        self.payload = payload
+
+    def to_dict(self):
+        rv = dict(self.payload or ())
+        rv['message'] = self.message
+        return rv
+        
+        
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
+
 import pprint
 
 from werkzeug.utils import secure_filename
@@ -57,12 +81,7 @@ def index(filename):
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
     if 'file' not in request.files:
-        str = os.path.join(app.config['UPLOAD_FOLDER'], "filename")
-        return 'No file part ' + str
-        str = pprint.pformat(request.environ, depth=5)
-        print (str)
-        return Response(str, mimetype="text/text")
-        return 'No file part'
+        raise InvalidUsage('There is no file', status_code=410)
     else:
         file = request.files['file']
         # return json.dumps(file)
@@ -70,7 +89,7 @@ def send_qr():
         # submit a empty part without filename
         if file.filename == '':
             flash('No selected file')
-            return 'No selected file'
+            raise InvalidUsage('No selected files', status_code=410)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -78,9 +97,14 @@ def send_qr():
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
             if res==0:
-                return 'No QR found'
+                raise InvalidUsage('No QR found', status_code=410)
             
             pos=pos.tolist()
+            
+            text_file = open("/var/www/ewave/backend/tmp_img/debug_pos.txt", "w")
+            text_file.write(json.dumps(pos))
+            text_file.close()
+            
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
