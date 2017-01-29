@@ -77,15 +77,17 @@ def send_qr():
             
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
-            if res!=0:
-                pos=pos.tolist()
+            if res==0:
+                return 'No QR found'
+            
+            pos=pos.tolist()
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
             
             text_file.close()
-            par['x'] = pos['x']
-            par['y'] = pos['z']
+            par['x'] = pos[0]
+            par['y'] = pos[2]
             marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
