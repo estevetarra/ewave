@@ -5,7 +5,7 @@ import os.path
 import random
 import re
 import time
-#import QRRead
+import QRRead
 
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
@@ -25,7 +25,7 @@ app.secret_key = 'admin'
 
 
 # Regular expression to only accept certain files
-fileChecker = re.compile(r"(.*\.js|.*\.html|.*\.png|.*\.css|.*\.map)$")
+fileChecker = re.compile(r"(.*\.js|.*\.html|.*\.png|.*\.css|.*\.map|.*\.jpg|.*\.jpeg)$")
 domain = "ewave.com"
 random.seed(7)
 
@@ -67,10 +67,10 @@ def send_qr():
             return 'No selected file'
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            str = os.path.join(app.config['UPLOAD_FOLDER'], filename)            
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            str = "/var/www/ewave/backend/tmp_img/" + filename         
+            file.save(str)
 
-            #res,data,pos = QRRead.getQRPosition(str)
+            res,data,pos = QRRead.getQRPosition(str)
             
             text_file = open("./output.txt", "r")
             scenario = json.load(text_file)
