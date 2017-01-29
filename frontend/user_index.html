@@ -62,7 +62,7 @@
             contentType: false,
             success: function(response) {
                 //read sequence and execute it after synchronization
-                alert(response);
+                //alert(response);
                 var json = JSON.parse(response)
                 var d = new Date;
                 offset = json["time"] - d.getTime();
