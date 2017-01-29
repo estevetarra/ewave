@@ -43,7 +43,7 @@ function myFunction(){
      // Sending and receiving data in JSON format using POST mothod
 //
     xhr = new XMLHttpRequest();
-    var url = "http://127.0.0.1:5000/set_scenario";
+    var url = "/set_scenario";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () { 
