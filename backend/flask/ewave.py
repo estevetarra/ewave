@@ -187,4 +187,4 @@ def getColorSequence(seqImage, posFromQr):
 
 
 if __name__ == '__main__':
-    app.run(processes=3)
+    app.run(debug=True)
