@@ -156,8 +156,8 @@ def getColorSequence(seqImage, posFromQr):
     y = int (max(0, y))
 
     l = []
-    for i in range(len(seqImage)):
-        l.append(seqImage[i][x][y])
+    for i in range(len(seqImage["data"])):
+        l.append(seqImage["data"][i][y][x])
 
     return l
 
