@@ -74,9 +74,9 @@ def send_qr():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             res,data,pos = QRRead.getQRPosition(str)
             millis = int(round(time.time() * 1000))
-            db = client.database
-            cl = db.colection
-            scenario = cl.find_one({"name": "prova"})
+            #db = client.database
+            #cl = db.colection
+            #scenario = cl.find_one({"name": "prova"})
             
             return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis, "pos" : pos})
     return 'something went wrong'
@@ -84,9 +84,9 @@ def send_qr():
 
 @app.route('/set_scenario',methods=['POST'])
 def set_scenario():
-    db = client.database
-    cl = db.colection
-    cl.insert_one(request.get_json())
+    #db = client.database
+    #cl = db.colection
+    #cl.insert_one(request.get_json())
     return json.dumps(request.get_json())
     """
     qr_size = request.args.get('qr_size')
