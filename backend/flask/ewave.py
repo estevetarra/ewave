@@ -13,7 +13,7 @@ import pprint
 
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = "./../tmp_img/"
+UPLOAD_FOLDER = "/var/www/ewave/backend/tmp_img/"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
@@ -67,9 +67,9 @@ def send_qr():
             return 'No selected file'
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            str = "/var/www/ewave/backend/tmp_img/" + filename         
+            str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            return ({'noob': str})
             file.save(str)
-
             res,data,pos = QRRead.getQRPosition(str)
             
             text_file = open("./output.txt", "r")
