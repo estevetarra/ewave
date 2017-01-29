@@ -84,6 +84,7 @@ def send_qr():
             text_file.close()
 
             scenario['time_frames'] = int(scenario['time_frames'])
+            scenario['time_between_frames'] = int(scenario['time_between_frames'])
             scenario["qr_size"] = float(scenario["qr_size"])
             scenario["room_x"] = float(scenario["room_x"])
             scenario["room_y"] = float(scenario["room_y"])

@@ -1,6 +1,5 @@
 <html>
 <head>
-
     <title>eWave</title>
     <meta charset="utf-8">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
@@ -64,9 +63,14 @@
                 //read sequence and execute it after synchronization
                 //alert(response);
                 var json = JSON.parse(response)
-                var d = new Date;
-                offset = json["time"] - d.getTime();
-                setInterval(executeSequence,10,json["data"],json["time_frames"], offset);
+                if (json['error'] == 1){
+                  alert(json["message"]);
+                }
+                else{
+                  var d = new Date;
+                  var offset = json["time"] - d.getTime();
+                  setInterval(executeSequence,10,json["data"],json["time_frames"], offset);
+                }
             },
             error: function(jqXHR, textStatus, errorMessage) {
                 alert(errorMessage);
