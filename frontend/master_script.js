@@ -11,14 +11,14 @@ function myFunction(){
     var colorprimary = document.getElementById('color1').value;
 
     var colorsecondary = document.getElementById('color2').value;
-    var frames = 30;
+    var framestime = 30;
 
 
 
-    resultArray  = generateGraph_version1 (frames,colorprimary,colorsecondary,image_w,image_h);
+    resultArray  = generateGraph_version1 (framestime,colorprimary,colorsecondary,image_w,image_h);
     alert ("the form was submitted\n QR size : "+QRSize+"\n QRheight:"+QRheight
         +"\n Distance from first person"+QRdist_first+"\nimage_width:"+image_w+"\nimage height:"+image_h+"\ncolor1"+colorprimary+"\ncolor2"+colorsecondary+
-        "\nroom width : "+room_x+"\nroom length:"+room_y+"\n frames : "+frames
+        "\nroom width : "+room_x+"\nroom length:"+room_y+"\n frames : "+framestime
 
     );
 
@@ -29,23 +29,42 @@ function myFunction(){
             "image_height":image_h,
             "room_x":room_x,
             "room_y":room_y,
-            "time_frames":frames,
-            "data":resultArray}
+            "time_frames":framestime,
+            "data":resultArray
+            };
+    //alert(JSON.stringify(objecteJson));
+     
 
-
+     // Sending and receiving data in JSON format using POST mothod
+//
+    xhr = new XMLHttpRequest();
+    var url = "http://127.0.0.1:5000/set_scenario";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () { 
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+            alert(xhr.responseText)
+        }
+    }
+    var data = JSON.stringify(objecteJson);
+    xhr.send(data);
+     
+/*
     var xhr = new XMLHttpRequest();
     var url = 'http://127.0.0.1:5000/set_scenario';
     xhr.open('POST', url,true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     xhr.onreadystatechange = function() {
-        if (xhr.readyState==XMLHttpRequest.DONE && xhr.status === 200) {
+        if (xhr.readyState==XMLHttpRequest.DONE && xhr.status == 200) {
             alert('Ok ,now ' + xhr.responseText);
         }
-        else if (xhr.status !== 200) {
+        else if (xhr.status != 200) {
             alert('Request failed.  Returned status of ' + xhr.status);
         }
     };
-    xhr.send(objecteJson);
+    xhr.send(JSON.stringify(objecteJson));
+    */
 
 
     /*xhr.onreadystatechange =function (){

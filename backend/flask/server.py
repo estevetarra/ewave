@@ -5,8 +5,11 @@ import os.path
 import random
 import re
 import time
+import pymongo
 
+from pymongo import MongoClient
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
+
 import pprint
 
 from werkzeug.utils import secure_filename
@@ -72,6 +75,28 @@ def send_qr():
 
 @app.route('/set_scenario',methods=['POST'])
 def join_room():
+    return json.dumps(request.get_json())
+    qr_size = request.args.get('qr_size')
+    qr_center_height = request.args.get('qr_center_height')
+    qr_distance = request.args.get('qr_distance')
+    image_width = request.args.get('image_width')
+    image_height = request.args.get('image_height')
+    room_x = request.args.get('room_x')
+    room_y = request.args.get('room_y')
+    time_frames = request.args.get('time_frames')
+    data = request.args.get('data')
+    json_store = {            
+            "qr_size" : qr_size,
+            "qr_center_height" : qr_size,
+            "qr_distance" : qr_distance,
+            "image_width" : image_width,
+            "image_height" : image_height,
+            "room_x" : room_x,
+            "room_y" : room_y,
+            "time_frames" : time_frames,
+            "data" : data
+    }    
+    return json.dumps(json_store)
     return json.dumps({"url": "http://lmgtfy.com/?q=Esteve+rules"})
 
 
