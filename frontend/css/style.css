@@ -113,8 +113,9 @@ a
 
 a:hover
 {
-    color: #ef8376;
+
     border-bottom-color: transparent;
+    color:black;
 }
 
 sub
@@ -398,6 +399,7 @@ ul.icons li a
 ul.icons li a:hover
 {
     color: #ef8376;
+
 }
 
 ol.style1
@@ -477,14 +479,15 @@ ol.style1
 .form-style-2 input[type=button]{
     border: none;
     padding: 8px 15px 8px 15px;
-    background: #0c1160;
+    background: #271945;
+
     color: #fff;
     box-shadow: 1px 1px 4px #DADADA;
     -moz-box-shadow: 1px 1px 4px #DADADA;
     -webkit-box-shadow: 1px 1px 4px #DADADA;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
 }
 .form-style-2 input[type=text]{
 
@@ -1066,7 +1069,7 @@ header .icon.circled
 #header
 {
     position: relative;
-    background-image: url('../images/header.jpg');
+    background-image: url('../images/banner.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -1083,9 +1086,9 @@ header .icon.circled
 
 .homepage #header .overlay
 {
-    background-image: url('../images/header.jpg');
+    background-image: url('../images/banner.jpg');
     content: '';
-    background: #1C0920;
+    /*background: #1C0920;*/
     display: block;
     position: absolute;
     left: 0;
@@ -1547,6 +1550,8 @@ header .icon.circled
 .carousel .forward:hover:before,
 .carousel .backward:hover:before
 {
+/*    background-color: rgba(239,131,118, 0.75);
+*/
     background-color: rgba(239,131,118, 0.75);
 }
 
