@@ -90,8 +90,8 @@ def send_qr():
             scenario["room_x"] = float(scenario["room_x"])
             scenario["room_y"] = float(scenario["room_y"])
             scenario["qr_distance"] = float(scenario["qr_distance"])
-            scenario["image_width"] = float(scenario["image_width"])
-            scenario["image_height"] = float(scenario["image_height"])
+            scenario["image_width"] = int(scenario["image_width"])
+            scenario["image_height"] = int(scenario["image_height"])
             
             text_file.close()
             par = {}
