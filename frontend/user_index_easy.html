@@ -1,0 +1,57 @@
+<html>
+<head>
+
+    <title>eWave</title>
+
+</head>
+
+<body>
+        <button onclick="uploadFile()">Click me</button>
+
+    <img src="images/camera.png"/>
+    <input type="file" id="filechooser" accept="image/*" capture="camera" />
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function executeSequence(sequence, time, offset){
+        //change colors following the sequence
+        //alert("hola")
+        var d = new Date();
+        var n = d.getTime();
+        n = n + offset;
+        //alert(sequence[n%sequence.length]);
+        //console.log(Math.floor(n/time)%(sequence.length));
+        document.body.style.backgroundColor = sequence[Math.floor(n/time)%(sequence.length)];
+    }
+
+    function uploadFile() {
+        var blobFile = document.getElementById('filechooser');
+        var file = blobFile.files[0];
+        var formData = new FormData();
+        formData.append("file", file);
+
+        //console.log(formData.get("file"));
+        //console.log(formData);
+        //console.log(Array.from(formData.entries()));
+
+        $.ajax({
+            url: "/send_qr",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                //read sequence and execute it after synchronization
+                alert(response);
+                var json = JSON.parse(response)
+                var d = new Date;
+                offset = json["time"] - d.getTime();
+                setInterval(executeSequence,10,json["data"],json["time_frames"], offset);
+            },
+            error: function(jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage); // Optional
+            }
+        });
+    }
+</script>
+</html>
