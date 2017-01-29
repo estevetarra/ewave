@@ -75,7 +75,7 @@ def send_qr():
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
             if res==0:
-                return {"error" : 1, "message" :'No QR found'}
+                return json.dumps({"error" : 1, "message" :'No QR found'})
             
             pos=pos.tolist()
             
