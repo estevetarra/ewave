@@ -5,7 +5,7 @@ import os.path
 import random
 import re
 import time
-import QRRead
+#import QRRead
 
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
@@ -70,7 +70,7 @@ def send_qr():
             str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             return ({'noob': str})
             file.save(str)
-            res,data,pos = QRRead.getQRPosition(str)
+#            res,data,pos = QRRead.getQRPosition(str)
             
             text_file = open("./output.txt", "r")
             scenario = json.load(text_file)
