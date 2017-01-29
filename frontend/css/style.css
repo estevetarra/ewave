@@ -486,6 +486,10 @@ ol.style1
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
+.form-style-2 input[type=text]{
+
+    width: 50%;
+}
 .form-style-2 input[type=color]{
     background: #000000;
     box-shadow: 1px 1px 1px #DADADA;
