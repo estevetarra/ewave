@@ -84,6 +84,14 @@ def send_qr():
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
+
+            scenario['time_frames'] = int(scenario['time_frames'])
+            seqImage["qr_size"] = float(seqImage["qr_size"])
+            seqImage["room_x"] = float(seqImage["room_x"])
+            seqImage["room_y"] = float(seqImage["room_y"])
+            seqImage["qr_distance"] = float(seqImage["qr_distance"])
+            seqImage["image_width"] = float(seqImage["image_width"])
+            seqImage["image_height"] = float(seqImage["image_height"])
             
             text_file.close()
             par = {}
