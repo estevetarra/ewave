@@ -70,7 +70,7 @@ def send_qr():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             millis = int(round(time.time() * 1000))
             return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
-    return 'something when wrong'
+    return 'something went wrong'
     
 
 @app.route('/set_scenario',methods=['POST'])

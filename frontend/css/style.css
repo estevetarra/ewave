@@ -30,22 +30,25 @@
 	body
 	{
 		background: #f0f4f4;
-		color: #5b5b5b;
+		color: #151519;
 		font-family: 'Source Sans Pro', sans-serif;
 		font-weight: 300;
 	}
 
-	body,input,textarea,select
+	body,input,textarea
 	{
 		font-size: 15pt;
 		line-height: 1.85em;
+		margin-left:20px;
 	}
 
 	h1,h2,h3,h4,h5,h6
 	{
 		font-weight: 400;
-		color: #483949;
+		
+		color: #151519;
 		line-height: 1.25em;
+
 	}
 	
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
@@ -67,12 +70,13 @@
 	
 	h3
 	{
-		font-size: 1.25em;
+		font-size: 2.25em;
+        font-weight: bold;
 	}
 	
 	h4
 	{
-		font-size: 1em;
+		font-size: 2em;
 		margin: 0 0 0.25em 0;
 	}
 	
@@ -293,7 +297,7 @@
 				display: block;
 				width: 100%;
 				margin: 0 0 4em 0;
-			}
+		}
 			
 			.image.left
 			{
@@ -402,72 +406,88 @@
 
 	/* Forms */
 
-		form
-		{
-		}
-		
-			form label
-			{
-				display: block;
-			}
-		
-			form input.text,
-			form select,
-			form textarea
-			{
-				-webkit-appearance: none;
-				display: block;
-				border: 0;
-				background: #ccc;
-				width: 100%;
-			}
+.form-style-2{
+	max-width: 500px;
+	padding: 20px 12px 10px 20px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-2-heading{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding-bottom: 3px;
+}
+.form-style-2 label{
+	display: block;
+	margin: 0px 0px 15px 0px;
+}
+.form-style-2 label > span{
+	width: 100px;
+	font-weight: bold;
+	float: left;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+.form-style-2 span.required{
+	color:red;
+}
+.form-style-2 .tel-number-field{
+	width: 40px;
+	text-align: center;
+}
+.form-style-2 input.input-field{
+	width: 20%;
 
-				form input.text:hover,
-				form select:hover,
-				form textarea:hover
-				{
-				}
+}
 
-				form input.text:focus,
-				form select:focus,
-				form textarea:focus
-				{
-				}
-				
-				form textarea
-				{
-					min-height: 9em;
-				}
+.form-style-2 input.input-field,
+.form-style-2 .tel-number-field,
+.form-style-2 .textarea-field,
+.form-style-2 .select-field{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	-moz-box-shadow: 1px 1px 4px #EBEBEB;
+	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+	outline: none;
+}
+.form-style-2 .input-field:focus,
+.form-style-2 .tel-number-field:focus,
+.form-style-2 .textarea-field:focus,
+.form-style-2 .select-field:focus{
+	border: 1px solid #0C0;
+}
+.form-style-2 .textarea-field{
+	height:100px;
+	width: 55%;
+}
+.form-style-2 input[type=submit],
+.form-style-2 input[type=button]{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #0c1160;
+	color: #fff;
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.form-style-2 input[type=submit]:hover,
+.form-style-2 input[type=button]:hover{
+	background: #0c1160;
+	color: #fff;
+}
 
-				form .formerize-placeholder
-				{
-					color: #555 !important;
-				}
-
-				form ::-webkit-input-placeholder
-				{
-					color: #555 !important;
-				}
-
-				form :-moz-placeholder
-				{
-					color: #555 !important;
-				}
-
-				form ::-moz-placeholder
-				{
-					color: #555 !important;
-				}
-
-				form :-ms-input-placeholder
-				{
-					color: #555 !important;
-				}
-
-				form ::-moz-focus-inner
-				{
-					border: 0;
-				}
 			
 	/* Tables */
 	
@@ -1045,6 +1065,7 @@
 	
 			.homepage #header .overlay
 			{
+				 background-image: url('../images/header.jpg');
 				content: '';
 				background: #1C0920;
 				display: block;
@@ -1289,7 +1310,7 @@
 	{
 		background:#0e2549;
 		text-align: center;
-		color:##b3c2db;
+		color:#b3c2db;
 		padding: 4.5em 0 4.5em 0;
 	}
 
@@ -1418,8 +1439,10 @@
 
 	.carousel
 	{
-		background:#0e2549;
-		
+		/*background:#0e2549;
+		*/
+		background-image: url('../images/header.jpg');
+
 		position: relative;
 		overflow: hidden;
 		padding: 2em 0 2em 0;

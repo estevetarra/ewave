@@ -40,7 +40,7 @@
 
     <header>
 
-      <h1><a href="#" id="logo">Helios</a></h1>
+      <h1><a href="#" id="logo">eWave</a></h1>
 
     </header>
 
@@ -60,23 +60,6 @@
 
           <li><a href="#">Magna phasellus</a></li>
 
-          <li><a href="#">Etiam dolore nisl</a></li>
-
-          <li> <span>And a submenu &hellip;</span>
-
-            <ul>
-
-              <li><a href="#">Lorem ipsum dolor</a></li>
-
-              <li><a href="#">Phasellus consequat</a></li>
-
-              <li><a href="#">Magna phasellus</a></li>
-
-              <li><a href="#">Etiam dolore nisl</a></li>
-
-            </ul>
-
-          </li>
 
           <li><a href="#">Veroeros feugiat</a></li>
 
@@ -86,9 +69,7 @@
 
       <li><a href="master_index.html">Administrator</a></li>
 
-      <li><a href="#">Right Sidebar</a></li>
 
-      <li><a href="#">No Sidebar</a></li>
 
     </ul>
 
@@ -96,45 +77,43 @@
 
 </div>
 
-<h1>Configure image</h1>
+<div class="carousel">
+<div class ="form-style-2">
+  <div class = "form-style-2-heading">Configure image</div>
 <form onsubmit="myFunction()">
 <h3>About the animation</h3>
-<h4>Enter image resolution:</h4>
 
-Width:<input type = "number" width ="1" name = "wimage" id = "imgw" value =5 required >px<br> 
-Height:<input type= "number" name = "himage" id = "imgh" value =5 required> px
+<h4>Enter image resolution:</h4>
+    <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" value="5" id="imgw"/></label>
+    <label><span>Height<span class="required">*</span></span><input type="number" class="input-field" name="field1" value="5" id ="imgh"/></label>
+<!--<input type = "number" width ="1" name = "wimage" id = "imgw" value =5 required >px<br> -->
+
 <h4>Select image type</h4>
  <select>
   <option value="wave">Wave</option>
   <option value="gradient">Gradient</option>
-</select> 
- <h4>Select colors for the wave:</h4>
-Main Color
-<input type = "color" id = "color1" name="wavecolor1">
-Secondary Color
-<input type = "color" id = "color2" name="wavecolor2">
+</select>
+ <h4>Select colors and speed for the wave:</h4>
+    <label><span>Main Color<span class="required">*</span></span><input type="color"  name="wavecolor1" id="color1"/></label>
+    <label><span>Secondary Color<span class="required">*</span></span><input type="color"  name="wavecolor2" id="color2"/></label>
+    <label><span>Time between frames<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="30" id="frames"/></label>
 
-<h4>Select the time between frames</h4>
 
-<input type= "number" name = "frames" id = "frames" value =30 required> 
-<h3>Enter room size: </h3>
-Width:<input type = "number" step = "0.1" value = 20 name = "wroom" id = "roomw" required>m <br>
-Length:<input type= "number" step = "0.1" value = 20 name = "hroom" id ="roomh"  required>m
+
+<h3>About the room size: </h3>
+
+    <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="roomw"/></label>
+    <label><span>Length<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.1" value="20" id ="roomh"/></label>
 <h3> About the QR </h3>
-<h4 id = "title">Enter QR size: </h4>
-<input type = "number" step = "0.01" name = "qrsize" id="qrsize" required>
-  
-<h4 id = "title">Enter the height of the QR center: </h4>
 
-<input type = "number" step = "0.1" name = "qrheight" id="qrheight" required>m
-
-<h4 id = "title">Enter the distance of the QR from the crowd: </h4>
-
-<input type = "number" step = "0.1" name = "qrdistance" id="qrdistance" required>m
+    <label><span>QR size<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.01" value="5" id="qrsize"/></label>
+    <label><span>QR center height<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.01" value="5" id ="qrheight"/></label>
+    <label><span>QR distance from crowd<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="qrdistance"/></label>
 
 <br>
 <input type="submit" name= "generate QR!">
 </form>
-<p id = "resultArray"></p>
+</div>
+</div>
 </body>
 </html>
