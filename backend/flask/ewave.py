@@ -125,25 +125,17 @@ def getColorSequence(seqImage, posFromQr):
     x = posFromQr["x"] * seqImage["qr_size"] + (seqImage["room_x"] - seqImage["qr_size"])/2
     y = posFromQr["y"] * seqImage["qr_size"] - seqImage["qr_distance"]
     
-    print x
-    print y
     #Scale the results to the image boundaries
     x = x / seqImage["room_x"] * seqImage["image_width"]
     y = y / seqImage["room_y"] * seqImage["image_height"]
     
-    print x
-    print y
     #Adjust the position of the (0,0) (upper left) and round the results
     x = seqImage["image_width"] - math.ceil(x)
     y = seqImage["image_height"] - math.ceil(y)
 
-    print x
-    print y
     #Fit the results inside the area
     x = min(seqImage["image_width"], x)
     y = min(seqImage["image_height"], y)
-    print x
-    print y
 
     x = max(0, x)
     y = max(0, y)
