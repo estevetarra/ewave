@@ -5,7 +5,10 @@ import os.path
 import random
 import re
 import time
+
+import math
 import QRRead
+
 
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
@@ -124,21 +127,32 @@ def set_scenario():
 def getColorSequence(seqImage, posFromQr):
     #Get position from bottom right corner of the room
     x = posFromQr["x"] * seqImage["qr_size"] + (seqImage["room_x"] - seqImage["qr_size"])/2
-    y = posFromQr["y"] * seqImage["qr_size"] - d
+    y = posFromQr["y"] * seqImage["qr_size"] - seqImage["qr_distance"]
+    
+    print x
+    print y
     #Scale the results to the image boundaries
     x = x / seqImage["room_x"] * seqImage["image_width"]
     y = y / seqImage["room_y"] * seqImage["image_height"]
+    
+    print x
+    print y
     #Adjust the position of the (0,0) (upper left) and round the results
-    x = seqImage["image_width"] - round(x)
-    y = seqImage["image_height"] - round(y)
+    x = seqImage["image_width"] - math.ceil(x)
+    y = seqImage["image_height"] - math.ceil(y)
+
+    print x
+    print y
     #Fit the results inside the area
     x = min(seqImage["image_width"], x)
     y = min(seqImage["image_height"], y)
+    print x
+    print y
 
-    x = max(seqImage["image_width"], x)
-    y = max(seqImage["image_height"], y)
+    x = max(0, x)
+    y = max(0, y)
 
-    return posFromQr["data"][:][y][x]
+    return seqImage["data"][y][x]
 
 
 if __name__ == '__main__':
