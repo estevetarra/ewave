@@ -67,7 +67,7 @@
 <div class="carousel">
     <div class ="form-style-2">
         <div class = "form-style-2-heading">Configure image</div>
-        <form onsubmit="myFunction()">
+        <form>
             <h3>About the animation:</h3>
 
             <h4>Enter image properties:</h4>
@@ -83,7 +83,8 @@
             <h4>Select colors and speed for the wave:</h4>
             <label><span>Main Color<span class="required">*</span></span><input type="color"  name="wavecolor1" id="color1"/></label>
             <label><span>Secondary Color<span class="required">*</span></span><input type="color"  name="wavecolor2" id="color2" value = "#FFFFFF"/></label>
-            <label><span>Time between frames<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="30" id="frames"/></label>
+            <label><span>Number of frames<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="30" id="frames"/></label>
+            <label><span>Time between frames (milliseconds)<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="300" id="time_bw_frames"/></label>
 
 
             <h3>About the space: </h3>
@@ -99,7 +100,7 @@
             <label><span>QR distance from crowd<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="0.20" id="qrdistance"/></label>
 
             <br>
-            <input type="submit" name= "generate QR!"value="Generate QR">
+            <input type="button" onclick="myFunction()" name= "generate QR!"value="Generate QR">
         </form>
     </div>
 </div>
