@@ -75,7 +75,7 @@ def send_qr():
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
             if res==0:
-                return 'No QR found'
+                return {"error" : 1, "message" :'No QR found'}
             
             pos=pos.tolist()
             
@@ -101,7 +101,7 @@ def send_qr():
             marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": scenario['time_frames'],"data": marcret, "time": millis})
+            return json.dumps({"error" : 0,"time_frames": scenario['time_between_frames'],"data": marcret, "time": millis})
     return 'something went wrong'
     
 
