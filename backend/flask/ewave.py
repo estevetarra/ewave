@@ -62,7 +62,7 @@ def send_qr():
         return 'No file part'
     else:
         file = request.files['file']
-        return json.dumps(file)
+        # return json.dumps(file)
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
@@ -74,13 +74,15 @@ def send_qr():
             
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
+            if res!=0:
+                pos=pos.tolist()
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
             text_file.close()
-
+            
             millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : pos.tolist(), "room_x": scenario['room_x']})
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : pos, "room_x": scenario['room_x']})
     return 'something went wrong'
     
 
