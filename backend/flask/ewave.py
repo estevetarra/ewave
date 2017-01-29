@@ -5,10 +5,8 @@ import os.path
 import random
 import re
 import time
-import pymongo
-import QRRead
+#import QRRead
 
-from pymongo import MongoClient
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
 
 import pprint
@@ -21,7 +19,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 
 app = Flask(__name__)
-mongo = PyMongo(app)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = 'admin'
@@ -70,20 +67,24 @@ def send_qr():
             return 'No selected file'
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            
+            str = os.path.join(app.config['UPLOAD_FOLDER'], filename)            
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            res,data,pos = QRRead.getQRPosition(str)
+#            res,data,pos = QRRead.getQRPosition(str)
             millis = int(round(time.time() * 1000))
-            scenario = mongo.db.scenarios.find_one({"name": "prova"})
             
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : 0})
+            text_file = open("./output.txt", "r")
+            scenario = json.load(text_file)
+            text_file.close()
+            
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECE"], "time": millis, "pos" : 0, "room_x": scenario['room_x']})
     return 'something went wrong'
     
 
 @app.route('/set_scenario',methods=['POST'])
 def set_scenario():
-    mongo.db.scenarios.insert_one(request.get_json())
+    text_file = open("./output.txt", "w")
+    text_file.write(json.dumps(request.get_json()))
+    text_file.close()
     return json.dumps(request.get_json())
     """
     qr_size = request.args.get('qr_size')
