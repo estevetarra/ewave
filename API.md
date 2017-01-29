@@ -68,6 +68,8 @@ Here is gonna be the API
     // data[frame_number]
     
     "data" : ["#EFDECD","#EFDECD","#EFDECD"]
+
+    "time" : 108383209 (in millis, to synchronize)
     
 }
 

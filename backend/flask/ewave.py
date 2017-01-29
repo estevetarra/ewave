@@ -6,7 +6,7 @@ import random
 import re
 import time
 import pymongo
-import QRRead
+#import QRRead
 
 from pymongo import MongoClient
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
@@ -72,7 +72,7 @@ def send_qr():
             str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            res,data,pos = QRRead.getQRPosition(str)
+            #res,data,pos = QRRead.getQRPosition(str)
             millis = int(round(time.time() * 1000))
             #db = client.database
             #cl = db.colection
@@ -112,6 +112,25 @@ def set_scenario():
     """
     return json.dumps(json_store)
     return json.dumps({"url": "http://lmgtfy.com/?q=Esteve+rules"})
+
+def getColorSequence(seqImage, posFromQr):
+    #Get position from bottom right corner of the room
+    x = posFromQr["x"] * seqImage["qr_size"] + (seqImage["room_x"] - seqImage["qr_size"])/2
+    y = posFromQr["y"] * seqImage["qr_size"] - d
+    #Scale the results to the image boundaries
+    x = x / seqImage["room_x"] * seqImage["image_width"]
+    y = y / seqImage["room_y"] * seqImage["image_height"]
+    #Adjust the position of the (0,0) (upper left) and round the results
+    x = seqImage["image_width"] - round(x)
+    y = seqImage["image_height"] - round(y)
+    #Fit the results inside the area
+    x = min(seqImage["image_width"], x)
+    y = min(seqImage["image_height"], y)
+
+    x = max(seqImage["image_width"], x)
+    y = max(seqImage["image_height"], y)
+
+    return posFromQr["data"][:][y][x]
 
 
 if __name__ == '__main__':
