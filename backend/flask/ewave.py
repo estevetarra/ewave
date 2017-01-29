@@ -149,8 +149,8 @@ def getColorSequence(seqImage, posFromQr):
     y = seqImage["image_height"] - math.ceil(y)
 
     #Fit the results inside the area
-    x = min(seqImage["image_width"], x)
-    y = min(seqImage["image_height"], y)
+    x = min(seqImage["image_width"]-1, x)
+    y = min(seqImage["image_height"]-1, y)
 
     x = int (max(0, x))
     y = int (max(0, y))
