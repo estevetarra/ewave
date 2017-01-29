@@ -86,12 +86,12 @@ def send_qr():
             scenario = json.load(text_file)
 
             scenario['time_frames'] = int(scenario['time_frames'])
-            seqImage["qr_size"] = float(seqImage["qr_size"])
-            seqImage["room_x"] = float(seqImage["room_x"])
-            seqImage["room_y"] = float(seqImage["room_y"])
-            seqImage["qr_distance"] = float(seqImage["qr_distance"])
-            seqImage["image_width"] = float(seqImage["image_width"])
-            seqImage["image_height"] = float(seqImage["image_height"])
+            scenario["qr_size"] = float(scenario["qr_size"])
+            scenario["room_x"] = float(scenario["room_x"])
+            scenario["room_y"] = float(scenario["room_y"])
+            scenario["qr_distance"] = float(scenario["qr_distance"])
+            scenario["image_width"] = float(scenario["image_width"])
+            scenario["image_height"] = float(scenario["image_height"])
             
             text_file.close()
             par = {}
