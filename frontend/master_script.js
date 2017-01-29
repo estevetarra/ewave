@@ -49,6 +49,8 @@ function myFunction(){
         }
     }
     var data = JSON.stringify(objecteJson);
+
+	
     xhr.send(data);
      
 /*
