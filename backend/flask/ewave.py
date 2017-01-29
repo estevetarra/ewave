@@ -59,6 +59,7 @@ def index(filename):
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
     if 'file' not in request.files:
+        file = []
     
     else:
         file = request.files['file']
@@ -93,6 +94,7 @@ def send_qr():
             text_file = open("/var/www/ewave/backend/tmp_img/debbug_pos.txt", "a")
             text_file.write(json.dumps(pos))
             text_file.close()
+            
             par = {}
             par['x'] = pos[0]
             par['y'] = pos[2]
