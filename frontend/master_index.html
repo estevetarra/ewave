@@ -1,118 +1,120 @@
 <html>
 <head>
-<meta charset="UTF-8"> 
-<script src = "master_script.js"></script>
-<title>eWave | Admin</title>
+    <meta charset="UTF-8">
+    <script src = "master_script.js"></script>
+    <title>eWave | Admin</title>
 
 
-<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 
-<!--[if lte IE 8]>
+    <!--[if lte IE 8]>
 
-<script src="js/html5shiv.js"></script>
+    <script src="js/html5shiv.js"></script>
 
-<![endif]-->
+    <![endif]-->
 
-<script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
 
-<script src="js/jquery.dropotron.js"></script>
+    <script src="js/jquery.dropotron.js"></script>
 
-<script src="js/skel.min.js"></script>
+    <script src="js/skel.min.js"></script>
 
-<script src="js/skel-panels.min.js"></script>
+    <script src="js/skel-panels.min.js"></script>
 
-<script src="js/init.js"></script>
+    <script src="js/init.js"></script>
 
-<noscript>
+    <noscript>
 
-<link rel="stylesheet" href="css/skel-noscript.css">
+        <link rel="stylesheet" href="css/skel-noscript.css">
 
-<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style-noscript.css">
+        <link rel="stylesheet" href="css/style-noscript.css">
 
-</noscript>
+    </noscript>
 </head>
 <body class="left-sidebar">
 <div id="header">
 
-  <div class="inner">
+    <div class="inner">
 
-    <header>
+        <header>
 
-      <h1><a href="#" id="logo">eWave</a></h1>
+            <h1><a href="#" id="logo">eWave</a></h1>
 
-    </header>
+        </header>
 
-  </div>
+    </div>
 
-  <nav id="nav">
-
-    <ul>
-
-      <li><a href="user_index.html">Home</a></li>
-
-      <li> <span>Dropdown</span>
+    <nav id="nav">
 
         <ul>
 
-          <li><a href="#">Lorem ipsum dolor</a></li>
+            <li><a href="user_index.html">Home</a></li>
 
-          <li><a href="#">Magna phasellus</a></li>
+            <li> <span>Dropdown</span>
+
+                <ul>
+
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+
+                    <li><a href="#">Magna phasellus</a></li>
 
 
-          <li><a href="#">Veroeros feugiat</a></li>
+                    <li><a href="#">Veroeros feugiat</a></li>
+
+                </ul>
+
+            </li>
+
+            <li><a href="master_index.html">Administrator</a></li>
+
+
 
         </ul>
 
-      </li>
-
-      <li><a href="master_index.html">Administrator</a></li>
-
-
-
-    </ul>
-
-  </nav>
+    </nav>
 
 </div>
 
 <div class="carousel">
-<div class ="form-style-2">
-  <div class = "form-style-2-heading">Configure image</div>
-<form onsubmit="myFunction()">
-<h3>About the animation:</h3>
+    <div class ="form-style-2">
+        <div class = "form-style-2-heading">Configure image</div>
+        <form onsubmit="myFunction()">
+            <h3>About the animation:</h3>
 
-<h4>Enter image properties:</h4>
-    <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" value="5" id="imgw"/></label>
-    <label><span>Height<span class="required">*</span></span><input type="number" class="input-field" name="field2" value="5" id ="imgh"/></label>
-<!--<input type = "number" width ="1" name = "wimage" id = "imgw" value =5 required >px<br> -->
+            <h4>Enter image properties:</h4>
+            <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" value="5" id="imgw"/></label>
+            <label><span>Height<span class="required">*</span></span><input type="number" class="input-field" name="field2" value="5" id ="imgh"/></label>
+            <!--<input type = "number" width ="1" name = "wimage" id = "imgw" value =5 required >px<br> -->
 
-    <label><span>Image type<span class = "required">*</span></span ><select name="field3" class="select-field">
-        <option value="Wave">Wave</option>
-        <option value="Gradient">Gradient</option>
-    </select></label>
+            <label><span>Image type<span class = "required">*</span></span ><select name="field3" class="select-field">
+                <option value="Wave">Wave</option>
+                <option value="Gradient">Gradient</option>
+            </select></label>
 
- <h4>Select colors and speed for the wave:</h4>
-    <label><span>Main Color<span class="required">*</span></span><input type="color"  name="wavecolor1" id="color1"/></label>
-    <label><span>Secondary Color<span class="required">*</span></span><input type="color"  name="wavecolor2" id="color2"/></label>
-    <label><span>Time between frames<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="30" id="frames"/></label>
+            <h4>Select colors and speed for the wave:</h4>
+            <label><span>Main Color<span class="required">*</span></span><input type="color"  name="wavecolor1" id="color1"/></label>
+            <label><span>Secondary Color<span class="required">*</span></span><input type="color"  name="wavecolor2" id="color2"/></label>
+            <label><span>Time between frames<span class="required">*</span></span><input type="number" class="input-field" name="field4"  value="30" id="frames"/></label>
 
 
-<h3>About the room size: </h3>
+            <h3>About the space: </h3>
 
-    <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="roomw"/></label>
-    <label><span>Length<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.1" value="20" id ="roomh"/></label>
-<h3> About the QR </h3>
+            <label><span>Room name<span class="required">*</span></span><input type="text" class="input-field" name="field1"  id="roomname"/></label>
 
-    <label><span>QR size<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.01" value="5" id="qrsize"/></label>
-    <label><span>QR center height<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.01" value="5" id ="qrheight"/></label>
-    <label><span>QR distance from crowd<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="qrdistance"/></label>
+            <label><span>Width<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="roomw"/></label>
+            <label><span>Length<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.1" value="20" id ="roomh"/></label>
+            <h3> About the QR </h3>
 
-<br>
-<input type="submit" name= "generate QR!">
-</form>
-</div>
+            <label><span>QR size<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.01" value="5" id="qrsize"/></label>
+            <label><span>QR center height<span class="required">*</span></span><input type="number" class="input-field" name="field1" step="0.01" value="5" id ="qrheight"/></label>
+            <label><span>QR distance from crowd<span class="required">*</span></span><input type="number" class="input-field" name="field1" step ="0.1" value="20" id="qrdistance"/></label>
+
+            <br>
+            <input type="submit" name= "generate QR!">
+        </form>
+    </div>
 </div>
 </body>
 </html>

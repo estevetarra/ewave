@@ -9,7 +9,7 @@ function myFunction(){
     var room_x= document.getElementById ('roomw').value;
     var room_y=document.getElementById ('roomh').value;
     var colorprimary = document.getElementById('color1').value;
-
+    var RoomName = document.getElementById('roomname').value;
     var colorsecondary = document.getElementById('color2').value;
     var framestime = 30;
 
@@ -18,7 +18,7 @@ function myFunction(){
     resultArray  = generateGraph_version1 (framestime,colorprimary,colorsecondary,image_w,image_h);
     alert ("the form was submitted\n QR size : "+QRSize+"\n QRheight:"+QRheight
         +"\n Distance from first person"+QRdist_first+"\nimage_width:"+image_w+"\nimage height:"+image_h+"\ncolor1"+colorprimary+"\ncolor2"+colorsecondary+
-        "\nroom width : "+room_x+"\nroom length:"+room_y+"\n frames : "+framestime
+        "\nroom width : "+room_x+"\nroom length:"+room_y+"\n frames : "+framestime+"\n room name ="+RoomName
 
     );
 
@@ -30,7 +30,8 @@ function myFunction(){
             "room_x":room_x,
             "room_y":room_y,
             "time_frames":framestime,
-            "data":resultArray
+            "data":resultArray,
+            "name":RoomName
             };
     //alert(JSON.stringify(objecteJson));
      
