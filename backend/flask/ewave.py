@@ -98,7 +98,7 @@ def send_qr():
             
             par = {}
             par['x'] = pos[0]
-            par['y'] = pos[2]
+            par['y'] = -pos[2]
             marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
