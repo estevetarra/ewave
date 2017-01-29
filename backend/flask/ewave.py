@@ -54,7 +54,7 @@ def index(filename):
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
     if 'file' not in request.files:
-        str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        str = os.path.join(app.config['UPLOAD_FOLDER'], "filename")
         return 'No file part ' + str
         str = pprint.pformat(request.environ, depth=5)
         print (str)
