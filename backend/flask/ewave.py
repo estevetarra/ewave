@@ -6,6 +6,7 @@ import random
 import re
 import time
 import pymongo
+import QRRead
 
 from pymongo import MongoClient
 from flask import Flask, send_from_directory, request, abort, redirect, url_for, flash, Response
@@ -68,13 +69,16 @@ def send_qr():
             return 'No selected file'
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+            str = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            res,data,pos = QRRead.getQRPosition(str)
             millis = int(round(time.time() * 1000))
             db = client.database
             cl = db.colection
             scenario = cl.find_one({"name": "prova"})
             
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis, "pos" : pos})
     return 'something went wrong'
     
 
