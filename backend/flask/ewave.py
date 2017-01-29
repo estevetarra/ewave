@@ -17,6 +17,7 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = "./../tmp_img/"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
+client = MongoClient()
 
 app = Flask(__name__)
 
@@ -69,13 +70,21 @@ def send_qr():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             millis = int(round(time.time() * 1000))
+            db = client.database
+            cl = db.colection
+            scenario = cl.find_one({"name": "prova"})
+            
             return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis})
     return 'something went wrong'
     
 
 @app.route('/set_scenario',methods=['POST'])
-def join_room():
+def set_scenario():
+    db = client.database
+    cl = db.colection
+    cl.insert_one(request.get_json())
     return json.dumps(request.get_json())
+    """
     qr_size = request.args.get('qr_size')
     qr_center_height = request.args.get('qr_center_height')
     qr_distance = request.args.get('qr_distance')
@@ -96,6 +105,7 @@ def join_room():
             "time_frames" : time_frames,
             "data" : data
     }    
+    """
     return json.dumps(json_store)
     return json.dumps({"url": "http://lmgtfy.com/?q=Esteve+rules"})
 
