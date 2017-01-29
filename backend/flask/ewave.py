@@ -59,6 +59,7 @@ def index(filename):
 @app.route('/send_qr',methods=['POST'])
 def send_qr():
     if 'file' not in request.files:
+        file = []
     
     else:
         file = request.files['file']
@@ -74,12 +75,13 @@ def send_qr():
             file.save(str)
             res,data,pos = QRRead.getQRPosition(str)
             if res==0:
-                return 'No QR found'
+                return {"error" : 1, "message" :'No QR found'}
             
             pos=pos.tolist()
             
             text_file = open("/var/www/ewave/backend/tmp_img/output.txt", "r")
             scenario = json.load(text_file)
+            text_file.close()
 
             scenario['time_frames'] = int(scenario['time_frames'])
             scenario["qr_size"] = float(scenario["qr_size"])
@@ -89,14 +91,17 @@ def send_qr():
             scenario["image_width"] = int(scenario["image_width"])
             scenario["image_height"] = int(scenario["image_height"])
             
+            text_file = open("/var/www/ewave/backend/tmp_img/debbug_pos.txt", "a")
+            text_file.write(json.dumps(pos))
             text_file.close()
+            
             par = {}
             par['x'] = pos[0]
             par['y'] = pos[2]
             marcret = getColorSequence(scenario,par)
             
             millis = int(round(time.time() * 1000))
-            return json.dumps({"time_frames": scenario['time_frames'],"data": marcret, "time": millis})
+            return json.dumps({"error" : 0,"time_frames": scenario['time_between_frames'],"data": marcret, "time": millis})
     return 'something went wrong'
     
 
