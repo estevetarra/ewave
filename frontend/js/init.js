@@ -88,7 +88,7 @@
 // jQuery functions
 
 	// scrolly
-		jQuery.fn.n33_scrolly = function() {				
+/*		jQuery.fn.n33_scrolly = function() {
 			jQuery(this).click(function(e) {
 				var h = jQuery(this).attr('href'), target;
 
@@ -100,7 +100,7 @@
 				}
 			});
 		};
-
+*/
 	// preloadImage
 		jQuery.n33_preloadImage = function(url, onload) {
 			var	$img = $('<img />'),
@@ -187,7 +187,6 @@
 				$('form').n33_formerize();
 
 		// Initialize scrolly links
-			$('.scrolly').n33_scrolly();
 
 		// Initialize dropotron
 			$('#nav > ul').dropotron(helios_settings.dropotron);
@@ -299,7 +298,7 @@
 				// Init
 					$window.load(function() {
 
-						reelWidth = $reel[0].scrollWidth;
+						//reelWidth = $reel[0].scrollWidth;
 
 						skel.onStateChange(function() {
 				
@@ -325,7 +324,7 @@
 						});
 
 						$window.resize(function() {
-							reelWidth = $reel[0].scrollWidth;
+							//reelWidth = $reel[0].scrollWidth;
 							$t._update();
 						}).trigger('resize');
 

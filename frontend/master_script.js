@@ -13,14 +13,18 @@ function myFunction(){
     var colorsecondary = document.getElementById('color2').value;
     var framestime = 30;
 
+    var img_type = document.getElementById('type').value;
 
 
-    resultArray  = generateGraph_version1 (framestime,colorprimary,colorsecondary,image_w,image_h);
+
+    if (img_type=="Vertical")    resultArray  = generateGraph_version1 (framestime,colorprimary,colorsecondary,image_w,image_h);
+    else  resultArray  = generateGraph_version2 (framestime,colorprimary,colorsecondary,image_w,image_h);
     alert ("the form was submitted\n QR size : "+QRSize+"\n QRheight:"+QRheight
         +"\n Distance from first person"+QRdist_first+"\nimage_width:"+image_w+"\nimage height:"+image_h+"\ncolor1"+colorprimary+"\ncolor2"+colorsecondary+
         "\nroom width : "+room_x+"\nroom length:"+room_y+"\n frames : "+framestime+"\n room name ="+RoomName
 
     );
+
 
     var objecteJson = {"qr_size": QRSize,
             "qr_center_height":QRheight,
@@ -99,9 +103,33 @@ function generateGraph_version1(time_frames,color1,color2, img_w,img_h){
 	}
  	return imgArray;
 }
+function generateGraph_version2(time_frames,color1,color2,img_w,img_h) {
+
+    var imgArray = new Array();
+    for (i=0; i<time_frames; i++){
+        imgArray[i] = new Array();
+        for (j=0; j<img_h; j++){
+            imgArray[i][j] = new Array();
+            for (k=0; k<img_w;k++){
+                currentcolor = getColor_version2 (i,time_frames,k,img_w,color1,color2);
+
+                imgArray[i][j][k]= currentcolor;
+            }
+        }
+    }
+    return imgArray;
+
+}
 function getColor_version1 (current_frame, time_frames, j,img_h, color1,color2){
-	var percentage = current_frame/time_frames
+	var percentage = current_frame/time_frames;
 	var current_height = j/img_h;
 	if (current_height<percentage) return color2;
 	else return color1;
+}
+function getColor_version2 (current_frame,time_frames,i,img_w,color1,color2){
+    var percentage = current_frame/time_frames;
+    var current_height = i/img_w;
+    if (current_height<percentage) return color2;
+    else return color1;
+
 }
