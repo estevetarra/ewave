@@ -62,6 +62,7 @@ def send_qr():
         return 'No file part'
     else:
         file = request.files['file']
+        return json.dumps(file)
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
