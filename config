@@ -1,5 +1,4 @@
-pip install flask
-pip install pymongo
+pip install Flask-PyMongo
 
 sudo apt-get install -y mongodb
 sudo service mongod start
