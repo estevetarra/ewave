@@ -78,7 +78,7 @@ def send_qr():
             #cl = db.colection
             #scenario = cl.find_one({"name": "prova"})
             
-            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis, "pos" : pos})
+            return json.dumps({"time_frames": 1000,"data": ["#FF2B2B","#AFDACA","#EFDECD"], "time": millis, "pos" : 0})
     return 'something went wrong'
     
 
