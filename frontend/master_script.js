@@ -38,8 +38,8 @@ function myFunction(){
             "data":resultArray,
             "name":RoomName,
             "time_between_frames":time_bw_frames
-            };
-    //alert(JSON.stringify(objecteJson));
+	};
+    alert(JSON.stringify(objecteJson));
      
 
      // Sending and receiving data in JSON format using POST mothod
@@ -58,36 +58,7 @@ function myFunction(){
 
 	
     xhr.send(data);
-     
-/*
-    var xhr = new XMLHttpRequest();
-    var url = 'http://127.0.0.1:5000/set_scenario';
-    xhr.open('POST', url,true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState==XMLHttpRequest.DONE && xhr.status == 200) {
-            alert('Ok ,now ' + xhr.responseText);
-        }
-        else if (xhr.status != 200) {
-            alert('Request failed.  Returned status of ' + xhr.status);
-        }
-    };
-    xhr.send(JSON.stringify(objecteJson));
-    */
 
-
-    /*xhr.onreadystatechange =function (){
-        if (xhr.readyState==XMLHttpRequest.DONE && xhr.status==200){
-            var json_ans = JSON.parse(xhr.responseText);
-            console.log(json_ans.url);
-            alert ("success!!");
-        }
-        else if (xhr.status == 400) alert ("There was an error 400");
-
-    }*/
-    //var data = JSON.stringify (objecteJson);
-    //xhr.send(data);
-//$.post ("127.0.0.1/set_scenario",objecteJson,function (data,status){	alert ("Data : " +data + "\nStatus: "+status);});
 }
 function generateGraph_version1(total_frames ,color1,color2, img_w,img_h){
 
